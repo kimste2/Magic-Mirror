@@ -2,7 +2,7 @@ from flask import render_template
 from app import app
 from app.forms import LoginForm
 import sys
-sys.path.insert(1, "/home/pi/Desktop/")
+sys.path.insert(1, "/home/pi/Documents/microblog/supportScripts/")
 import weather
 import swanson
 @app.route('/')
