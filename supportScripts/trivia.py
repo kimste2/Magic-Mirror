@@ -27,15 +27,17 @@ else:
     question = l['question']
     cleanText = BeautifulSoup(html.unescape(question), 'lxml')
     cleanQuestion = cleanText.text
+
     possible_Answers = []  
     possible_Answers.append(l['correct_answer'])
     for i in l['incorrect_answers']:
         possible_Answers.append(i)
+        
     random.shuffle(possible_Answers)
 
     string = ""
     for p in possible_Answers:
-         string += str(p) + " "
+         string += str(p) + ", "
             
     cleanText = BeautifulSoup(html.unescape(string), 'lxml')
     cleanAnswers = cleanText.text
@@ -45,5 +47,3 @@ def getQuestion():
  
 def getAnswers():
     return cleanAnswers
-        
-#getTrivia()

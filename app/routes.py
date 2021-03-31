@@ -5,6 +5,7 @@ import sys
 sys.path.insert(1, "/home/pi/Documents/microblog/supportScripts/")
 import weather
 import swanson
+import trivia 
 @app.route('/')
 @app.route('/index', methods=['GET'])
 def index():
@@ -17,7 +18,16 @@ def index():
         {
             'author':{ 'username':'Weather'},
             'body' : weather.getWeather()
+        },
+        {
+            'author':{ 'username':'trivia question'},
+            'body' : trivia.getQuestion()
+        },
+        {
+            'author':{ 'username':'trivia answer'},
+            'body' : trivia.getAnswers()
         }
+        
         
     ]
 
