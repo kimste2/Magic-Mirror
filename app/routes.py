@@ -12,23 +12,20 @@ def index():
     user = {'username' : 'kimste2' }
     posts = [
         {
-            'author': {'username': 'Ron Swanson'},
+            'author': "swanson", 
             'body': swanson.get1Quote()
         },
         {
-            'author':{ 'username':'Weather'},
+            'author': "weather",  
             'body' : weather.getWeather()
         },
-        {
-            'author':{ 'username':'trivia question'},
+        {   'author': "triviaQuesiton",  
             'body' : trivia.getQuestion()
         },
         {
-            'author':{ 'username':'trivia answer'},
+            'author': "triviaResponses", 
             'body' : trivia.getAnswers()
         }
-        
-        
     ]
 
     return render_template('index.html',title="Home", user=user, posts=posts)
