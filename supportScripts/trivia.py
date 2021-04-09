@@ -29,21 +29,37 @@ else:
     cleanQuestion = cleanText.text
 
     possible_Answers = []  
-    possible_Answers.append(l['correct_answer'])
+    correctAnswer = l['correct_answer']
+    possible_Answers.append(correctAnswer)
+    
     for i in l['incorrect_answers']:
         possible_Answers.append(i)
         
-    random.shuffle(possible_Answers)
+
 
     string = ""
     for p in possible_Answers:
-         string += str(p) + ", "
+         string += str(p) + ","
             
     cleanText = BeautifulSoup(html.unescape(string), 'lxml')
-    cleanAnswers = cleanText.text
+    cleanAnswers = cleanText.text.strip()
+    lst = cleanAnswers.split(",");
+    random.shuffle(lst)
+    dct = {}
     
+     
+    for l in lst:
+        if l == correctAnswer:
+            dct['correct'] = l
+        else:
+            dct['incorrect' + str(lst.index(l))] = l
+            
+     
+
+    
+             
 def getQuestion():        
     return cleanQuestion
  
 def getAnswers():
-    return cleanAnswers
+    return dct

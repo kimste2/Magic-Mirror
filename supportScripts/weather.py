@@ -34,7 +34,7 @@ def getWeather():
 
     currentTemperature = str(math.ceil(jsonString["main"]["temp"]))
     feelsLike = str(math.ceil(jsonString["main"]["feels_like"]))
-    weather +="Current temperature is {cTemp} (Fahrenheit) but feels like {fTemp} (Fahrenheit).\n".format(cTemp=currentTemperature, fTemp=feelsLike)
+    weather +="Current temperature is {cTemp}(F) but feels like {fTemp}(F).\n".format(cTemp=currentTemperature, fTemp=feelsLike)
 
     currentHumidity = str(jsonString["main"]["humidity"])
     weather += "The current humidity level is {humidity}%.\n".format(humidity=currentHumidity)

@@ -1,18 +1,23 @@
 {% extends "base.html" %}
-
 {% block content %}
 <style>
 text-alignt:center;
 </style>
     <h1>Hi, {{ user.username }}!</h1>
     {% for post in posts %}
-    <div class = {{post.author}}>
+    <div class = container>
     <p>
 	<b>{{ post.body }}</b>
 	
     </p>
     </div>
-    
-
     {% endfor %}
+    
+    {%for k in dct.keys()%}
+	{%if k == "correct"%}
+	    <div class = correct> {{dct[k]}} </b>
+	{% else %}
+		<div class = incorrect> {{dct[k]}}  </p>
+	{% endif %}
+    {%endfor%}
 {% endblock %}

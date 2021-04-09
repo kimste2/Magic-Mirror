@@ -9,7 +9,7 @@ import trivia
 @app.route('/')
 @app.route('/index', methods=['GET'])
 def index():
-    user = {'username' : 'kimste2' }
+    user = {'username' : 'Steve' }
     posts = [
         {
             'author': "swanson", 
@@ -21,16 +21,14 @@ def index():
         },
         {   'author': "triviaQuesiton",  
             'body' : trivia.getQuestion()
-        },
-        {
-            'author': "triviaResponses", 
-            'body' : trivia.getAnswers()
         }
     ]
 
-    return render_template('index.html',title="Home", user=user, posts=posts)
+    return render_template('index.html',title="Home", user=user, posts=posts, dct=trivia.getAnswers())
 
 @app.route('/login')
 def login():
     form = LoginForm()
     return render_template('login.html', title='Sign In', form=form)
+
+     
