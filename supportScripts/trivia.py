@@ -26,33 +26,35 @@ else:
      
     question = l['question']
     cleanText = BeautifulSoup(html.unescape(question), 'lxml')
-    cleanQuestion = cleanText.text
+    cleanQuestion = cleanText.text.strip()
 
     possible_Answers = []  
     correctAnswer = l['correct_answer']
-    possible_Answers.append(correctAnswer)
+    possible_Answers.append(correctAnswer.strip())
     
     for i in l['incorrect_answers']:
-        possible_Answers.append(i)
+        if i and i.strip():
+            possible_Answers.append(i.strip())
         
-
+    
 
     string = ""
     for p in possible_Answers:
          string += str(p) + ","
             
     cleanText = BeautifulSoup(html.unescape(string), 'lxml')
-    cleanAnswers = cleanText.text.strip()
-    lst = cleanAnswers.split(",");
+    cleanAnswers = cleanText.text.rstrip()
+    cleanAnswers.strip()
+    lst = cleanAnswers.split(",", 3);
     random.shuffle(lst)
     dct = {}
     
-     
+    emptyString = ""
     for l in lst:
         if l == correctAnswer:
-            dct['correct'] = l
+            dct['correct'] = l.strip()
         else:
-            dct['incorrect' + str(lst.index(l))] = l
+            dct['incorrect' + str(lst.index(l))] = l.strip()
             
      
 
