@@ -33,8 +33,7 @@ else:
     possible_Answers.append(correctAnswer.strip())
     
     for i in l['incorrect_answers']:
-        if i and i.strip():
-            possible_Answers.append(i.strip())
+    	possible_Answers.append(i.strip())
         
     
 
@@ -52,13 +51,9 @@ else:
     emptyString = ""
     for l in lst:
         if l == correctAnswer:
-            dct['correct'] = l.strip()
+            dct['correct'] = l.replace(',','').rstrip()
         else:
-            dct['incorrect' + str(lst.index(l))] = l.strip()
-            
-     
-
-    
+            dct['incorrect' + str(lst.index(l))] = l.replace(',','').rstrip()
              
 def getQuestion():        
     return cleanQuestion
